@@ -1,0 +1,62 @@
+import { toast } from 'react-toastify';
+import { hideLoader } from '../actions/LoaderAction';
+import ERRORS from '../constants/ErrorCode';
+import SUCCESS from '../constants/SuccessCode';
+import { format } from './formatString';
+
+export const showSuccess = (message) => {
+  toast.success('✔️ ' + message, {
+    position: 'top-right',
+    autoClose: 1500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    progress: undefined,
+    style: {
+      fontSize: '14px',
+    },
+  });
+};
+
+export const showError = (message) => {
+  toast.error('❌ ' + message, {
+    position: 'top-right',
+    autoClose: 1500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    progress: undefined,
+    style: {
+      fontSize: '14px',
+    },
+  });
+};
+
+export const showSuccessMessage = (res, id, dispatch) => {
+  var message = SUCCESS[res.data.successCode];
+  if (message) {
+    message = format(message, id);
+  } else {
+    message = res.data.successCode;
+  }
+
+  showSuccess(message.toString());
+  dispatch(hideLoader());
+};
+
+export const showErrorMessage = (error, id, dispatch) => {
+  const code =
+    (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+
+  var message = ERRORS[code];
+  if (message) {
+    message = format(message, id);
+  } else {
+    message = code;
+  }
+
+  showError(message.toString());
+  dispatch(hideLoader());
+};

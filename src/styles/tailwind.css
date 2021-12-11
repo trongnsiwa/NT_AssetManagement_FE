@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input[type='text'],
+  input[type='search'],
+  input[type='password'],
+  input[type='email'],
+  input[type='number'],
+  input[type='url'],
+  input[type='date'],
+  input[type='datetime-local'],
+  input[type='month'],
+  input[type='week'],
+  input[type='time'],
+  input[type='tel'],
+  select {
+    @apply text-gray-700 text-sm border rounded-md border-gray-600 w-full shadow-sm  focus:border-gray-500 focus:ring-gray-500 h-8;
+  }
+
+  select {
+    @apply py-0;
+  }
+
+  input[type='textarea'],
+  textarea,
+  select[multiple] {
+    @apply text-gray-700 text-sm border rounded-md border-gray-600 w-full shadow-sm  focus:border-gray-500 focus:ring-gray-500;
+  }
+
+  input[type='checkbox'] {
+    @apply rounded border border-gray-800 text-org focus:ring-org h-4 w-4 text-sm;
+  }
+
+  input[type='radio'] {
+    @apply text-org focus:ring-1 focus:ring-org h-3 w-3 text-sm;
+  }
+
+  input[type='search']::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  input[type='search']::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  input[type='password']::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
+
+  label {
+    @apply text-sm;
+  }
+
+  button,
+  a,
+  p {
+    @apply text-sm;
+  }
+}
+
+@layer components {
+  .table-custom-header {
+    @apply my-3 px-2 text-left font-medium text-sm;
+  }
+
+  .table-custom-row {
+    @apply mb-3 px-2 pt-1 whitespace-nowrap text-sm overflow-hidden;
+  }
+
+  .input-field {
+    @apply flex flex-col w-60;
+  }
+
+  .error-message {
+    @apply mt-2 text-xs font-normal text-red-500 break-words;
+  }
+
+  .error-input {
+    @apply border border-red-500 ring-1 ring-red-500;
+  }
+
+  .max-row {
+    max-width: 170px;
+  }
+}
